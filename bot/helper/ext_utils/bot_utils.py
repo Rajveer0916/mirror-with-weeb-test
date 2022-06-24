@@ -42,15 +42,15 @@ class MirrorStatus:
     STATUS_SEEDING = "Seeding...🌧"
 
 class EngineStatus:
-    STATUS_ARIA = "Aria2c v1.35.0"
-    STATUS_GD = "Google Api v2.51.0"
-    STATUS_MEGA = "MegaSDK v3.12.0"
-    STATUS_QB = "qBittorrent v4.3.9"
-    STATUS_TG = "Pyrogram v2.0.27"
-    STATUS_YT = "YT-dlp v22.5.18"
-    STATUS_EXT = "Extract | pExtract"
-    STATUS_SPLIT = "FFmpeg v2.9.1"
-    STATUS_ZIP = "p7zip v16.02"
+    STATUS_ARIA = "<b>Aria2c v1.35.0</b>"
+    STATUS_GD = "<b>Google Api v2.51.0</b>"
+    STATUS_MEGA = "<b>MegaSDK v3.12.0</b>"
+    STATUS_QB = "<b>qBittorrent v4.3.9</b>"
+    STATUS_TG = "<b>Pyrogram v2.0.27</b>"
+    STATUS_YT = "<b>YT-dlp v22.5.18</b>"
+    STATUS_EXT = "<b>Extract | pExtract</b>"
+    STATUS_SPLIT = "<b>FFmpeg v2.9.1</b>"
+    STATUS_ZIP = "<b>p7zip v16.02</b>"
 
 PROGRESS_MAX_SIZE = 100 // 9
 PROGRESS_INCOMPLETE = ['◔', '◔', '◑', '◑', '◑', '◕', '◕']
@@ -133,7 +133,7 @@ def get_progress_bar_string(status):
     if cPart >= 0:
         p_str += PROGRESS_INCOMPLETE[cPart]
     p_str += '○' * (PROGRESS_MAX_SIZE - cFull)
-    p_str = f"├[{p_str}]"
+    p_str = f"<b>├</b> [{p_str}]"
     return p_str
 
 def get_readable_message():
@@ -169,7 +169,7 @@ def get_readable_message():
                     #msg += f"\n<b>├👤 User | </b> <b>{download.message.from_user.first_name}</b>"
                     #msg += f"\n<b>├⚠️ Warn: </b> <code>/warn {download.message.from_user.id}</code>"
                 else:
-                    msg += f"\n<b>├🔻 Downloaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    msg += f"\n<b>├ Downloaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 msg += f"\n<b>├ Speed:</b> {download.speed()}"
                 msg += f"\n<b>├ ETA:</b> {download.eta()}"
                 msg += f"\n<b>├ Elapsed: </b>{get_readable_time(time() - download.message.date.timestamp())}"
@@ -200,8 +200,8 @@ def get_readable_message():
                 msg += f"\n<b>╰ Cancel: </b><code>/{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += f"\n<b>_____________________________________</b>"
             else:
-                msg += f"\n<b>├⛓️ Engine :</b> {download.eng()}"
-                msg += f"\n<b>╰📐 Size: </b>{download.size()}"
+                msg += f"\n<b>├ Engine :</b> {download.eng()}"
+                msg += f"\n<b>╰ Size: </b>{download.size()}"
                 msg += f"\n<b>_____________________________________</b>"
             msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
@@ -375,7 +375,7 @@ T-DN: {recv} | T-UP: {sent}
 CPU: {cpu}% | RAM: {mem}%
 Disk: {total} | Free: {free}
 Used: [{disk}%] is {used}
-Made with ❤️ by Weeb
+Made with ❤️ by Ajay
 """
     return stats
 dispatcher.add_handler(
